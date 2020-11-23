@@ -26,7 +26,6 @@ namespace Movietoon.Models
 
         public DateTime DateAdded { get; set; }
 
-        [Required]
         [Display(Name = "Movie's Genre")]
         public Genre Genre { get; set; }
         public int GenreId { get; set; }

@@ -38,16 +38,51 @@ namespace Movietoon.Controllers
             return View(viewModel);
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(MovieDetailViewModel viewModel)
         {
-            if (!ModelState.IsValid)
-                return View("Details", viewModel);
 
-            viewModel.Movie.DateAdded = DateTime.Today;
-            _context.Movies.Add(viewModel.Movie);
+            if (!ModelState.IsValid)
+            {
+                viewModel.Genres = _context.Genres.ToList();
+                return View("Details", viewModel);
+            }
+
+            if (viewModel.Movie.Id == 0)
+            {
+                _context.Movies.Add(viewModel.Movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == viewModel.Movie.Id);
+                if (movieInDb == null)
+                    return HttpNotFound("Error in the Movie Id");
+
+                movieInDb.Title = viewModel.Movie.Title;
+                movieInDb.GenreId = viewModel.Movie.GenreId;
+                movieInDb.ReleaseYear = viewModel.Movie.ReleaseYear;
+                movieInDb.DateAdded = DateTime.Today;
+            }
+
+            
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Movies");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movieInDb = _context.Movies.Single(m => m.Id == id);
+            if (movieInDb == null)
+                return HttpNotFound("Error in the Movie Id");
+            var viewModel = new MovieDetailViewModel
+            {
+                Movie = movieInDb,
+                Genres = _context.Genres.ToList()
+            };
+            return View("Details", viewModel);
         }
     }
 }

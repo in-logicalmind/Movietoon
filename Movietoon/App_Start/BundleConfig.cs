@@ -20,10 +20,15 @@ namespace Movietoon
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootbox.js",
+                      "~/Scripts/DataTables/jquery.datatables.js",
+                      "~/Scripts/DataTables/datatables.bootstrap.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-yeti.css",
+                      "~/Content/dataTables/css/datatables.bootstrap.css",
                       "~/Content/site.css"));
         }
     }
