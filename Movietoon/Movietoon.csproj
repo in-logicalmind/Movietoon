@@ -227,6 +227,10 @@
     <Compile Include="Migrations\202011232023222_AddDataAnnotationsForMovies.Designer.cs">
       <DependentUpon>202011232023222_AddDataAnnotationsForMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011232218319_AddCostAndUnitsForMovies.cs" />
+    <Compile Include="Migrations\202011232218319_AddCostAndUnitsForMovies.Designer.cs">
+      <DependentUpon>202011232218319_AddCostAndUnitsForMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -524,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011232023222_AddDataAnnotationsForMovies.resx">
       <DependentUpon>202011232023222_AddDataAnnotationsForMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011232218319_AddCostAndUnitsForMovies.resx">
+      <DependentUpon>202011232218319_AddCostAndUnitsForMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -3,4 +3,57 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>List of Customers</h2>
+
+<table id="movieList" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Membership Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $("#movieList").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "firstName",
+                        render: function (data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.lastName + ", " + customer.firstName + "</a>";
+                        }
+                    },
+                    {
+                        data: "email"
+                    },
+                    
+                    {
+                        data: "mobilePhone"
+                    },
+                    {
+                        data: "membershipType.description"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+        });
+    </script>
+}

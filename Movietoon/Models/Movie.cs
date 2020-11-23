@@ -29,5 +29,13 @@ namespace Movietoon.Models
         [Display(Name = "Movie's Genre")]
         public Genre Genre { get; set; }
         public int GenreId { get; set; }
+
+        [Required]
+        [Display(Name = "Unitary Cost")]
+        public float Price { get; set; }
+
+        [Required]
+        [Display(Name = "Available Units")]
+        public int AmountAvailable { get; set; }
     }
 }

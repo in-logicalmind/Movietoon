@@ -52,6 +52,7 @@ namespace Movietoon.Controllers
 
             if (viewModel.Movie.Id == 0)
             {
+                viewModel.Movie.DateAdded = DateTime.Today;
                 _context.Movies.Add(viewModel.Movie);
             }
             else
@@ -63,6 +64,9 @@ namespace Movietoon.Controllers
                 movieInDb.Title = viewModel.Movie.Title;
                 movieInDb.GenreId = viewModel.Movie.GenreId;
                 movieInDb.ReleaseYear = viewModel.Movie.ReleaseYear;
+                movieInDb.Price = viewModel.Movie.Price;
+                movieInDb.AmountAvailable = viewModel.Movie.AmountAvailable;
+
                 movieInDb.DateAdded = DateTime.Today;
             }
 

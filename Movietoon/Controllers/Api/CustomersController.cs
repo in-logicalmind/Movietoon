@@ -24,31 +24,29 @@ namespace Movietoon.Controllers.Api
         }
 
 
-        // // GET /api/customers
-        // public IHttpActionResult GetCustomers(string query = null)
-        // {
-        //     var customersQuery = _context.Customers
-        //         .Include(c => c.MembershipType);
-        //
-        //     if (!String.IsNullOrWhiteSpace(query))
-        //         customersQuery = customersQuery.Where(c => c.LastName.Contains(query));
-        //
-        //     var customerDtos = customersQuery
-        //         .ToList()
-        //         .Select(Mapper.Map<Customer, CustomerDto>);
-        //
-        //     return Ok(customerDtos);
-        // }
-        //
-        // // GET /api/customers/1
-        // public IHttpActionResult GetCustomer(int id)
-        // {
-        //     var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
-        //
-        //     if (customer == null)
-        //         return NotFound();
-        //
-        //     return Ok(Mapper.Map<Customer, CustomerDto>(customer));
-        // }
+        // GET /api/customers
+        public IHttpActionResult GetCustomers(string query = null)
+        {
+            var customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+        
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.LastName.Contains(query));
+        
+            var customers = customersQuery.ToList();
+        
+            return Ok(customers);
+        }
+        
+        // GET /api/customers/1
+        public IHttpActionResult GetCustomers(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+        
+            if (customer == null)
+                return NotFound();
+        
+            return Ok(customer);
+        }
     }
 }
