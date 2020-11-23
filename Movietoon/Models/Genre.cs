@@ -8,7 +8,7 @@ namespace Movietoon.Models
 {
     public class Genre
     {
-        public byte Id { get; set; }
-        public string GenretName { get; set; }
+        public int Id { get; set; }
+        public string GenreName { get; set; }
     }
 }

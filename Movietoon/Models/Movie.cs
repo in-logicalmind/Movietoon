@@ -8,10 +8,12 @@ namespace Movietoon.Models
 {
     public class Movie
     {
+        
         public int Id { get; set; }
         public string Title { get; set; }
         public short ReleaseYear { get; set; }
         public DateTime DateAdded { get; set; }
-        public IEnumerable<Genre> Genres { get; set; }
+        public Genre Genre { get; set; }
+        public int GenreId { get; set; }
     }
 }
