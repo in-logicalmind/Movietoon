@@ -7,28 +7,33 @@
 
 @using (Html.BeginForm("Save", "Customers"))
 {
-
-    @Html.LabelFor(c => c.FirstName)
-    @Html.TextAreaFor(c => c.FirstName)
-    @Html.ValidationMessageFor(c => c.FirstName)
-
-    @Html.LabelFor(c => c.LastName)
-    @Html.TextAreaFor(c => c.LastName)
-    @Html.ValidationMessageFor(c => c.LastName)
-
-    @Html.LabelFor(c => c.YearOfBirth)
-    @Html.TextAreaFor(c => c.YearOfBirth)
-    @Html.ValidationMessageFor(c => c.YearOfBirth)
-
-    @Html.LabelFor(c => c.Email)
-    @Html.TextAreaFor(c => c.Email)
-    @Html.ValidationMessageFor(c => c.Email)
-
-    @Html.LabelFor(c => c.MobilePhone)
-    @Html.TextAreaFor(c => c.MobilePhone)
-    @Html.ValidationMessageFor(c => c.MobilePhone)
-
-
+    <div class="form-group">
+        @Html.LabelFor(c => c.FirstName)
+        @Html.TextAreaFor(c => c.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.LastName)
+        @Html.TextAreaFor(c => c.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.YearOfBirth)
+        @Html.TextAreaFor(c => c.YearOfBirth, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.YearOfBirth)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Email)
+        @Html.TextAreaFor(c => c.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.MobilePhone)
+        @Html.TextAreaFor(c => c.MobilePhone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.MobilePhone)
+    </div>
+    <button class="btn-primary" type="submit">Save</button>
+    @Html.ActionLink("Home", "Index", "Home", new{@class="btn-default"})
 
 }
 

@@ -30,8 +30,15 @@ namespace Movietoon.Controllers
 
         public ActionResult Save(Customer customer)
         {
-            return View();
+            if (!ModelState.IsValid)
+                return View("Save", customer);
+
+            _context.Customers.Add(customer);
+
+            return RedirectToAction("Index","Home");
         }
+
+
 
     }
 }
