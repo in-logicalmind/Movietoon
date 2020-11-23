@@ -1,0 +1,46 @@
+﻿@model Movietoon.ViewModels.CustomerDetailViewModel
+@{
+    ViewBag.Title = "Save";
+}
+
+<h2>Customers Page</h2>
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.FirstName)
+        @Html.TextAreaFor(c => c.Customer.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.LastName)
+        @Html.TextAreaFor(c => c.Customer.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.YearOfBirth)
+        @Html.TextAreaFor(c => c.Customer.YearOfBirth, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.YearOfBirth)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Email)
+        @Html.TextAreaFor(c => c.Customer.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MobilePhone)
+        @Html.TextAreaFor(c => c.Customer.MobilePhone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.MobilePhone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipTypeId)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes,"Id","Description" ),"Select a Membership Type", new {@class="form-control"})
+        @Html.ValidationMessageFor(c => c.Customer.MobilePhone)
+    </div>
+    @Html.HiddenFor(m => m.Customer.Id)
+    @Html.AntiForgeryToken()
+    <button class="btn-primary" type="submit">Save</button>
+    @Html.ActionLink("Home", "Index", "Home", new { @class = "btn-default" })
+
+}

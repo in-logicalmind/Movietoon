@@ -17,6 +17,7 @@ namespace Movietoon.Models
         [Required]
         [MaxLength(100)]
         [Display(Name = "First Name")]
+        
         public string FirstName { get; set; }
 
         [Required]
@@ -38,6 +39,9 @@ namespace Movietoon.Models
         public short YearOfBirth { get; set; }
         public DateTime DateAdded { get; set; }
 
+        [Display(Name = "Membership type")]
+        public MembershipType MembershipType { get; set; }
+        public short MembershipTypeId { get; set; }
         
     }
 }

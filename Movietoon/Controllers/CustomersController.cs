@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Movietoon.Models;
+using Movietoon.ViewModels;
 
 namespace Movietoon.Controllers
 {
@@ -28,15 +29,32 @@ namespace Movietoon.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
                 return View("Save", customer);
 
+            customer.DateAdded = DateTime.Today;
             _context.Customers.Add(customer);
+            _context.SaveChanges();
 
             return RedirectToAction("Index","Home");
         }
+
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerDetailViewModel()
+            {
+                Customer = new Customer(),
+                MembershipTypes = membershipTypes
+            };
+
+            return View("Details", viewModel);
+
+        }
+
 
 
 
