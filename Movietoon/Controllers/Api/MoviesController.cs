@@ -25,10 +25,13 @@ namespace Movietoon.Controllers.Api
             _context.Dispose();
         }
 
-        [Authorize(Roles = RoleName.AdminMovies)]
+        // [Authorize(Roles = RoleName.AdminMovies)]
         public IHttpActionResult GetMovies(string query = null)
         {
-            var moviesQuery = _context.Movies.Include(m => m.Genre);
+            var moviesQuery = _context
+                .Movies.Include(m => m.Genre)
+                .Where(m => m.AvailableForRental > 0);
+
             if (!string.IsNullOrWhiteSpace(query))
                 moviesQuery = moviesQuery.Where(m => m.Title.Contains(query));
 

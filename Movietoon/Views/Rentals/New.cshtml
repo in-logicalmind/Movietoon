@@ -4,15 +4,123 @@
 }
 
 <h2>New Rental</h2>
-<form>
-    <div class="form-group">
-        <label>Customer</label>
-        <input type="text" class="form-control" />
+
+
+
+
+
+<form id="submitForm">
+    
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Customer</label>
+                        <div class="tt-container">
+                            <input id="customerList" class="form-control" type="text" placeholder="Customers search :)"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Movie</label>
+                        <div class="tt-container">
+                            <input id="movieList" type="text" class="form-control" placeholder="Movie search ;)" />
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-sm-6" >
+                    <div>
+                        <ul id="customerName"></ul>
+                    </div>
+                    <br/>
+                    <div>
+                        <ul id="selectedMoviesList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Movie</label>
-        <input type="text" class="form-control" />
-    </div>
+
     <button class="btn btn-primary" type="submit">Save</button>
 </form>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+
+            var viewModel = {
+                customerId: 0,
+                movieIds: []
+
+            };
+
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('lastName', 'firstName'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/Customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#customerList').typeahead({
+                    highlight: true,
+                    minLength: 3
+                },
+                {
+                    name: 'customers',
+                    display: function(token) { return token.lastName + ', ' + token.firstName },
+                    source: customers
+                    //bloodhound object
+                }).on("typeahead:select",
+                function(e, customerList) {
+                    $("#customerName").append("<li class='list-group-item'>" + customerList.lastName + ', ' + customerList.firstName + "</li>");
+                    viewModel.customerId = customerList.id;
+                });
+
+
+            var movies = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title', 'releaseYear'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/Movies?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#movieList').typeahead({
+                    highlight: true,
+                    minLength: 3
+                },
+                {
+                    name: 'movies',
+                    display: function(token) { return token.title + ' (' + token.releaseYear + ')' },
+                    source: movies
+                    //bloodhound object
+                }).on("typeahead:select",
+                function(e, movieList) {
+                    $("#selectedMoviesList").append("<li class='list-group-item'>" + movieList.title + "</li>");
+                    $("#movieList").typeahead("val", "");
+                    viewModel.movieIds.push(movieList.id);
+                });
+
+            //SUBMIT THE FORM
+            $('#submitForm').submit(function(e) {
+                e.preventDefault();
+                $.post({
+                        url: '/api/rentals/create',
+                        data: viewModel
+                        
+                    }).done(function() {
+                        console.log('success');
+                        toastr.success("New rental was saved correctly :)");
+                    })
+                    .fail(function() {
+                        toastr.success("Error, something happened :(");
+                    });
+            });
+        });
+    </script>
+}
 

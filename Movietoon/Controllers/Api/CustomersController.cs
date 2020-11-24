@@ -26,7 +26,7 @@ namespace Movietoon.Controllers.Api
         }
 
         // GET /api/customers
-        [Authorize(Roles = RoleName.AdminMovies)]
+        // [Authorize(Roles = RoleName.AdminMovies)]
         public IHttpActionResult GetCustomers(string query = null)
         {
             var customersQuery = _context.Customers
@@ -41,7 +41,7 @@ namespace Movietoon.Controllers.Api
         }
 
         // GET /api/customers/1
-        [Authorize(Roles = RoleName.AdminMovies)]
+        // [Authorize(Roles = RoleName.AdminMovies)]
         public IHttpActionResult GetCustomers(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
