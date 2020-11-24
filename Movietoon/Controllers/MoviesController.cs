@@ -71,6 +71,9 @@ namespace Movietoon.Controllers
                 movieInDb.Price = viewModel.Movie.Price;
                 movieInDb.AmountAvailable = viewModel.Movie.AmountAvailable;
 
+                //To initialize the amount of available units in the database
+                movieInDb.AvailableForRental = viewModel.Movie.AmountAvailable;
+
                 movieInDb.DateAdded = DateTime.Today;
             }
 

@@ -37,5 +37,7 @@ namespace Movietoon.Models
         [Required]
         [Display(Name = "Available Units")]
         public int AmountAvailable { get; set; }
+
+        public int AvailableForRental { get; set; }
     }
 }
