@@ -47,9 +47,12 @@
                     },
                     {
                         data: "id",
-                        render: function (data) {
-                            return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
-                        }
+                        render: function (data, type, customer) {
+                                return "<a href='/rentals/details/" + customer.id + "'>" + "Rental's Report" + "</a>";
+                            }
+
+                            
+                        
                     }
                 ]
             });

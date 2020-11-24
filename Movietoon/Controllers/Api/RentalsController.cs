@@ -50,7 +50,7 @@ namespace Movietoon.Controllers.Api
                 {
                     Movie = movie,
                     Customer = customer,
-                    RentedDate = DateTime.Today
+                    RentedDate = DateTime.Now
                 };
                 _context.Rentals.Add(rental);
                 _context.SaveChanges();

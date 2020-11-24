@@ -48,7 +48,7 @@ namespace Movietoon.Controllers
 
             if (customer.Id == 0)
             {
-                customer.DateAdded = DateTime.Today;
+                customer.DateAdded = DateTime.Now;
                 _context.Customers.Add(customer);
             }
             else
@@ -63,7 +63,7 @@ namespace Movietoon.Controllers
                 customerInDb.MobilePhone = customer.MobilePhone;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.YearOfBirth = customer.YearOfBirth;
-                customerInDb.DateAdded = DateTime.Today;
+                customerInDb.DateAdded = DateTime.Now;
 
 
             }

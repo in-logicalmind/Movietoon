@@ -56,7 +56,7 @@ namespace Movietoon.Controllers
 
             if (viewModel.Movie.Id == 0)
             {
-                viewModel.Movie.DateAdded = DateTime.Today;
+                viewModel.Movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(viewModel.Movie);
             }
             else
@@ -74,7 +74,7 @@ namespace Movietoon.Controllers
                 //To initialize the amount of available units in the database
                 movieInDb.AvailableForRental = viewModel.Movie.AmountAvailable;
 
-                movieInDb.DateAdded = DateTime.Today;
+                movieInDb.DateAdded = DateTime.Now;
             }
 
             

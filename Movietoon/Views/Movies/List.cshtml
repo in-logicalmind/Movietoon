@@ -46,8 +46,8 @@
                     },
                     {
                         data: "id",
-                        render: function (data) {
-                            return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
+                        render: function (data, type, movie) {
+                            return "<a href='/Rentals/ReportRentMovies/" + movie.id + "'>" + 'Movie rented Report' + "</a>";
                         }
                     }
                 ]
