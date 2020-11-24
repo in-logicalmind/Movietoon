@@ -23,6 +23,7 @@ namespace Movietoon.Controllers.Api
             _context.Dispose();
         }
 
+        [Authorize(Roles = RoleName.AdminMovies)]
         public IHttpActionResult GetMovies(string query = null)
         {
             var movies = _context.Movies.Include(m => m.Genre);
