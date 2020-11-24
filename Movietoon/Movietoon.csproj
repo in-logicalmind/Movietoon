@@ -231,14 +231,21 @@
     <Compile Include="Migrations\202011232218319_AddCostAndUnitsForMovies.Designer.cs">
       <DependentUpon>202011232218319_AddCostAndUnitsForMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011232331441_SeedUsers.cs" />
+    <Compile Include="Migrations\202011232331441_SeedUsers.Designer.cs">
+      <DependentUpon>202011232331441_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdultAgeConfirmationValidation.cs" />
+    <Compile Include="Models\CurrentDate.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerDetailViewModel.cs" />
@@ -476,11 +483,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\List.cshtml" />
     <Content Include="Views\Customers\Save.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\List.cshtml" />
+    <Content Include="Views\Movies\RestrictedList.cshtml" />
+    <Content Include="Views\Customers\RestrictedList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -531,6 +540,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011232218319_AddCostAndUnitsForMovies.resx">
       <DependentUpon>202011232218319_AddCostAndUnitsForMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011232331441_SeedUsers.resx">
+      <DependentUpon>202011232331441_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -25,9 +25,13 @@ namespace Movietoon.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View();
+            if(User.IsInRole(RoleName.AdminMovies))
+                return View("List");
+
+            return View("RestrictedList");
         }
 
+        [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Details()
         {
             var viewModel = new MovieDetailViewModel
@@ -41,6 +45,7 @@ namespace Movietoon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Save(MovieDetailViewModel viewModel)
         {
 
@@ -76,6 +81,8 @@ namespace Movietoon.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Edit(int id)
         {
             var movieInDb = _context.Movies.Single(m => m.Id == id);

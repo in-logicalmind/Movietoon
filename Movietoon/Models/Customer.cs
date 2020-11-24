@@ -36,12 +36,14 @@ namespace Movietoon.Models
         [Required]
         [Range(1900, 2020)]
         [Display(Name = "Year of birth")]
+        [AdultAgeConfirmationValidation]
         public short YearOfBirth { get; set; }
         public DateTime DateAdded { get; set; }
 
         [Display(Name = "Membership type")]
         public MembershipType MembershipType { get; set; }
         public short MembershipTypeId { get; set; }
-        
+
     }
+
 }

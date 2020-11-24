@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Employee's Portal";
+}
+
+<h2>List of Movies</h2>
+
+<table id="movieList" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Movie Title</th>
+        <th>Movie's Genre</th>
+        <th>Price</th>
+        <th>Units Available</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $("#movieList").DataTable({
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "title"
+                    },
+                    {
+                        data: "genre.genreName"
+                    },
+                    
+                    {
+                        data: "price"
+                    },
+                    {
+                        data: "amountAvailable"
+                    }
+                ]
+            });
+
+        });
+    </script>
+}

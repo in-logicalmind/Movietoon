@@ -25,16 +25,26 @@ namespace Movietoon.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = _context.Customers.ToList();
-            return View();
+            if(User.IsInRole(RoleName.AdminMovies))
+                return View("List");
+
+            return View("RestrictedList");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
-                return View("Save", customer);
+            {
+                var viewModel = new CustomerDetailViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("Details", viewModel);
+            }
 
             if (customer.Id == 0)
             {
@@ -62,6 +72,7 @@ namespace Movietoon.Controllers
             return RedirectToAction("Index","Customers");
         }
 
+        [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -75,6 +86,7 @@ namespace Movietoon.Controllers
 
         }
 
+        [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Edit(int id)
         {
             var customerInDb = _context.Customers.Single(c => c.Id == id);
@@ -90,9 +102,5 @@ namespace Movietoon.Controllers
             return View("Details", viewModel);
 
         }
-
-
-
-
     }
 }
