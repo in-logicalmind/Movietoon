@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Movietoon.Models;
 using System.Data.Entity;
+using AutoMapper;
+using Movietoon.Dtos;
 
 namespace Movietoon.Controllers.Api
 {
@@ -23,7 +25,6 @@ namespace Movietoon.Controllers.Api
             _context.Dispose();
         }
 
-
         // GET /api/customers
         [Authorize(Roles = RoleName.AdminMovies)]
         public IHttpActionResult GetCustomers(string query = null)
@@ -33,8 +34,8 @@ namespace Movietoon.Controllers.Api
         
             if (!String.IsNullOrWhiteSpace(query))
                 customersQuery = customersQuery.Where(c => c.LastName.Contains(query));
-        
-            var customers = customersQuery.ToList();
+
+            var customers = customersQuery.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         
             return Ok(customers);
         }
@@ -47,8 +48,10 @@ namespace Movietoon.Controllers.Api
         
             if (customer == null)
                 return NotFound();
+
+            var customerDto = Mapper.Map<Customer, CustomerDto>(customer);
         
-            return Ok(customer);
+            return Ok(customerDto);
         }
     }
 }

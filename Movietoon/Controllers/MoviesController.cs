@@ -44,7 +44,6 @@ namespace Movietoon.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Save(MovieDetailViewModel viewModel)
         {
@@ -81,7 +80,6 @@ namespace Movietoon.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
-        [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Edit(int id)
         {
