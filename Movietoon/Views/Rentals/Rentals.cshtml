@@ -1,23 +1,21 @@
-﻿@model Movietoon.Models.Customer
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Rentals";
 }
 
-<h2>List of Customers</h2>
+<h2>Rentals</h2>
 
 <table id="customerList" class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th>Customer Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Membership Type</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Membership Type</th>
+    </tr>
     </thead>
     <tbody></tbody>
 </table>
-
 
 @section scripts
 {
@@ -32,7 +30,7 @@
                     {
                         data: "firstName",
                         render: function (data, type, customer) {
-                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.lastName + ", " + customer.firstName + "</a>";
+                            return "<a href='/rentals/details/" + customer.id + "'>" + customer.lastName + ", " + customer.firstName + "</a>";
                         }
                     },
                     {
@@ -44,12 +42,6 @@
                     },
                     {
                         data: "membershipType.description"
-                    },
-                    {
-                        data: "id",
-                        render: function (data) {
-                            return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
-                        }
                     }
                 ]
             });
@@ -57,3 +49,4 @@
         });
     </script>
 }
+

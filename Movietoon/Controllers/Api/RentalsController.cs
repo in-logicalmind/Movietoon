@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
+using System.Data.Entity;
 using Movietoon.Dtos;
 using Movietoon.Models;
 
@@ -56,6 +57,23 @@ namespace Movietoon.Controllers.Api
             }
 
             return Ok();
+        }
+
+
+
+        [HttpGet]
+        public IHttpActionResult RentalsByUser(int id)
+        {
+            var rentalsByUser = _context.Rentals
+                .Include(r => r.Customer)
+                .Include(r => r.Movie)
+                .Where(r => r.Customer.Id == id)
+                .ToList();
+
+            if (rentalsByUser.Count == 0)
+                return NotFound();
+
+            return Ok(rentalsByUser);
         }
     }
 }
