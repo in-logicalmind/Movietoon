@@ -33,6 +33,7 @@ namespace Movietoon
                       "~/Content/dataTables/css/datatables.bootstrap.css",
                       "~/Content/typeahead.css",
                       "~/Content/toastr.css",
+                      "~/Content/tmdb.css",
                       "~/Content/site.css"));
         }
     }
