@@ -25,11 +25,12 @@ namespace Movietoon.Controllers
         }
 
         // GET: Rentals
+        [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult New()
         {
             return View();
         }
-
+        // [Authorize(Roles = RoleName.AdminMovies)]
         public ActionResult Rentals()
         {
             return View();

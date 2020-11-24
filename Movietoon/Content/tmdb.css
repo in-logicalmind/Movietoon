@@ -5,3 +5,11 @@
     width: auto;
     height: auto;
 }
+
+img.resize-login {
+    display: block;
+    max-width: 920px;
+    max-height: 380px;
+    width: auto;
+    height: auto;
+}

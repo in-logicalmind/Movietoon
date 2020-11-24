@@ -1,18 +1,21 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
 }
+
 <h2>Recommendations of the week</h2>
-<h6><a href="https://www.themoviedb.org/movie/now-playing?language=en-US">Obtained from TMDb API</a>
+<h6>
+    <a href="https://www.themoviedb.org/movie/now-playing?language=en-US">Obtained from TMDb API</a>
 </h6>
 
-    <div class="container">
-        <div id="panel-holder">
-        </div>
+<div class="container">
+    <div id="panel-holder">
     </div>
+</div>
 
-    @section scripts
+@section scripts
 {
-        <script>
+    <script>
             $(document).ready(function () {
 
                 $.ajax({
@@ -27,7 +30,7 @@
                         for (var i = 0; i < jsonResult.length; i++) {
                             console.log(jsonResult[i].original_title + ";");
                             $('#panel-holder').append(
-                                
+
                                 '<div class="panel panel-default">' +
                                 '<div class="row">' +
                                 '<div class="col-md-3">' +
@@ -53,5 +56,6 @@
                     }
                 });
             });
-        </script>
-    }
+    </script>
+}
+
