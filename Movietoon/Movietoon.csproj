@@ -275,6 +275,10 @@
     <Compile Include="ViewModels\RentalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Movietoon-20201123115029.mdf" />
+    <Content Include="App_Data\aspnet-Movietoon-20201123115029_log.ldf">
+      <DependentUpon>aspnet-Movietoon-20201123115029.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-yeti.css" />
@@ -537,9 +541,7 @@
     <Content Include="Views\Rentals\ReportRentMovies.cshtml" />
     <Content Include="Views\Popular\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
