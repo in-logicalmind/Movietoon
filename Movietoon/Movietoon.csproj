@@ -258,6 +258,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdultAgeConfirmationValidation.cs" />
+    <Compile Include="Models\CalculateCosts.cs" />
     <Compile Include="Models\CurrentDate.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />

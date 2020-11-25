@@ -36,9 +36,14 @@ namespace Movietoon.Controllers.Api
                 return BadRequest("The provided list of movies is empty");
 
             var movies = _context.Movies.Where(m => rentalDto.MovieIds.Contains(m.Id)).ToList();
-
             if (movies.Count != rentalDto.MovieIds.Count)
                 BadRequest("Some movie Id's provided are incorrect or there are not movies for that movie id");
+
+            var membershipType = _context.MembershipTypes.Single(m => m.Id == customer.MembershipTypeId);
+            if (membershipType ==null)
+                BadRequest("The membership type is incorrect for the customer provided");
+
+            var calculations = new CalculateCosts();
 
             foreach (var movie in movies)
             {
@@ -50,7 +55,9 @@ namespace Movietoon.Controllers.Api
                 {
                     Movie = movie,
                     Customer = customer,
-                    RentedDate = DateTime.Now
+                    RentedDate = DateTime.Now,
+                    TotalAfterDiscount = calculations.CalculateCostsMovie(membershipType,movie)
+                    
                 };
                 _context.Rentals.Add(rental);
                 _context.SaveChanges();
