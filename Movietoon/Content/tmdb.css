@@ -13,3 +13,10 @@ img.resize-login {
     width: auto;
     height: auto;
 }
+img.resize-home {
+    display: block;
+    max-width: 1500px;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+}

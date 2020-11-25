@@ -394,7 +394,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Error-404.png" />
     <Content Include="images\Flat Illustration1x.png" />
+    <Content Include="images\Parrot Pet Bird.svg" />
+    <Content Include="images\Signature.svg" />
+    <Content Include="images\Startup rocket illustration.svg" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />

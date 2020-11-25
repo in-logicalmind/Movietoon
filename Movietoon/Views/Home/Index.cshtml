@@ -1,57 +1,29 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<h2>Recommendations of the week</h2>
-<h6><a href="https://www.themoviedb.org/movie/now-playing?language=en-US">Obtained from TMDb API</a>
-</h6>
+<div class="row">
+    <div class="col-md-3">
+        <br />
+        <h5><strong>Welcome to MovieToon!</strong></h5>
+        <h6>The best DVD rental on the 'hood</h6>
+        <br />
+        <p><h6>Feel free to explore our promotions and sale of the season!</h6></p>
+        <p><h6>Also, check out our recommendation for the week</h6></p>
+        <br />
+        <p><h6><strong>Don't like the Rom-Com? ;)</strong> </h6></p>
+        <p><h6>We have all the genres you can imagine: Thriller, Comedy, Action, Drama... :)</h6></p>
+        <br />
+        <br />
+        <p><h6><strong>Do you miss your favorite TV-show? :(</strong></h6></p>
+        <p><h6>We have in our section, TV_Show's :)</h6></p>
+        <br />
+        <br />
+        <p><h5><strong>Grab your popcorn, and MovieToon&Chill'</strong> </h5></p>
 
-    <div class="container">
-        <div id="panel-holder">
-        </div>
+
     </div>
-
-    @section scripts
-{
-        <script>
-            $(document).ready(function () {
-
-                $.ajax({
-                    url: "https://api.themoviedb.org/3/movie/popular",
-                    data: {
-                        "api_key": "971c3706184ec75bff7240ac90652036",
-                        "language": "en-US",
-                        "page": "1"
-                    },
-                    success: function (data) {
-                        var jsonResult = data.results;
-                        for (var i = 0; i < jsonResult.length; i++) {
-                            console.log(jsonResult[i].original_title + ";");
-                            $('#panel-holder').append(
-                                
-                                '<div class="panel panel-default">' +
-                                '<div class="row">' +
-                                '<div class="col-md-3">' +
-                                '<img class="resize" src="https://image.tmdb.org/t/p/original' + jsonResult[i].poster_path + '" alt="Computer Hope logo small">' +
-                                '</div>' +
-                                '<div class= "col-md-3" >' +
-                                '<h3>' + jsonResult[i].original_title + '</h3>' +
-                                '<h6><strong>Average Vote: </strong>' + jsonResult[i].vote_average + '</h6>' +
-                                '<h6></h6>' +
-                                '</div><div class="col-md-3">' +
-                                '<h6><strong>Year: </strong>' + jsonResult[i].release_date + '</h6>' +
-                                '<h6><strong>Genre: </strong>Drama</h6>' +
-                                '<h6><strong>Original language: </strong>' + jsonResult[i].original_language + '</h6>' +
-                                '</div>' +
-                                '<div class="col-md-3">' +
-                                '<strong>Overview</strong>' +
-                                '<h6>' + jsonResult[i].overview + '</h6>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>'
-                            );
-                        }
-                    }
-                });
-            });
-        </script>
-    }
+    <div class="col-md-9">
+        <img class="resize-home" src="~/images/Parrot Pet Bird.svg" />
+    </div>
+</div>
+    
