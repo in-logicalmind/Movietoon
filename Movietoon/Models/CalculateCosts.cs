@@ -7,14 +7,14 @@ namespace Movietoon.Models
 {
     public class CalculateCosts
     {
-        private MembershipType MembershipType { get; set; }
-        private Movie Movie { get; set; }
+        public MembershipType MembershipType { get; set; }
+        public Movie Movie { get; set; }
 
         public float CalculateCostsMovie(MembershipType membershipType, Movie movie)
         {
-            var pct = membershipType.DiscountPct;
+            var pct = (float)membershipType.DiscountPct/100;
             var price = movie.Price;
-            return (price * (1-(pct / 100)));
+            return price * (1 - pct);
         }
     }
 }
